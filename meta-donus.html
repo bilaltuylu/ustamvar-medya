@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><title>avrupayakasi · Meta dönüşü</title>
+<meta name="robots" content="noindex">
+<style>body{font-family:system-ui,sans-serif;background:#0A0B0D;color:#F4F6F8;display:grid;place-items:center;height:100vh;margin:0}a{color:#19E3FF}p{max-width:520px;text-align:center;line-height:1.5}</style>
+</head><body>
+<p id="m">Meta yetkilendirmesi tamamlandı, panele dönülüyor…</p>
+<script>
+// Meta yalnız HTTPS dönüş adresi kabul ettiği için bu sayfa aradadır: sorguyu (code, state) olduğu gibi yerel panele aktarır.
+// Hiçbir şey saklanmaz, gönderilmez. Yerel panel: http://localhost:8765/meta/donus
+var hedef = "http://localhost:8765/meta/donus" + location.search;
+document.getElementById("m").innerHTML = "Meta yetkilendirmesi tamamlandı, panele dönülüyor… Otomatik dönmezse <a href='" + hedef + "'>buraya tıkla</a>.";
+location.replace(hedef);
+</script>
+</body></html>
