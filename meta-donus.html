@@ -6,8 +6,9 @@
 <p id="m">Meta yetkilendirmesi tamamlandı, panele dönülüyor…</p>
 <script>
 // Meta yalnız HTTPS dönüş adresi kabul ettiği için bu sayfa aradadır: sorguyu (code, state) olduğu gibi yerel panele aktarır.
-// Hiçbir şey saklanmaz, gönderilmez. Yerel panel: http://localhost:8765/meta/donus
-var hedef = "http://localhost:8765/meta/donus" + location.search;
+// Hiçbir şey saklanmaz, gönderilmez. state "w." ile başlıyorsa yeni web uygulaması (8770), değilse eski panel (8765).
+var durum = new URLSearchParams(location.search).get("state") || "";
+var hedef = (durum.indexOf("w.") === 0 ? "http://localhost:8770" : "http://localhost:8765") + "/meta/donus" + location.search;
 document.getElementById("m").innerHTML = "Meta yetkilendirmesi tamamlandı, panele dönülüyor… Otomatik dönmezse <a href='" + hedef + "'>buraya tıkla</a>.";
 location.replace(hedef);
 </script>
