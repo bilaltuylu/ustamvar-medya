@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><title>avrupayakasi · TikTok dönüşü</title>
+<meta name="robots" content="noindex">
+<style>body{font-family:system-ui,sans-serif;background:#0A0B0D;color:#F4F6F8;display:grid;place-items:center;height:100vh;margin:0}a{color:#19E3FF}p{max-width:520px;text-align:center;line-height:1.5}</style>
+</head><body>
+<p id="m">TikTok yetkilendirmesi tamamlandı, uygulamaya dönülüyor…</p>
+<script>
+// TikTok yalnız HTTPS dönüş adresi kabul ettiği için bu sayfa aradadır: sorguyu (code, state) olduğu gibi yerel uygulamaya aktarır.
+// Hiçbir şey saklanmaz, gönderilmez. Yalnız "t." ile başlayan state yerel web uygulamasına (8770) gider.
+var durum = new URLSearchParams(location.search).get("state") || "";
+if (durum.indexOf("t.") === 0) {
+  var hedef = "http://localhost:8770/tiktok/donus" + location.search;
+  document.getElementById("m").innerHTML = "TikTok yetkilendirmesi tamamlandı, uygulamaya dönülüyor… Otomatik dönmezse <a href='" + hedef + "'>buraya tıkla</a>.";
+  location.replace(hedef);
+} else {
+  document.getElementById("m").textContent = "Geçersiz dönüş.";
+}
+</script>
+</body></html>
